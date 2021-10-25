@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './modules/auth/auth.module';
 import { LayoutModule } from './modules/layout/layout.module';
+import { InputControlModule } from './shared/controls/input-control/input-control.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +14,8 @@ import { LayoutModule } from './modules/layout/layout.module';
     BrowserModule,
     AppRoutingModule,
     AuthModule,
-    LayoutModule
+    LayoutModule,
+    InputControlModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
