@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './modules/auth/auth.module';
 import { LayoutModule } from './modules/layout/layout.module';
 import { InputControlModule } from './shared/controls/input-control/input-control.module';
+import { StoreModule } from './store/store/store.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { InputControlModule } from './shared/controls/input-control/input-contro
     AuthModule,
     LayoutModule,
     InputControlModule,
+    StoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

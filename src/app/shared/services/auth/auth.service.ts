@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http'
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { IUserRegister } from '../../interfaces/user/user.register.interface';
-import { IUserAuth } from '../../interfaces/user/user.authenticate.interface';
-import { IUserAuthResponse } from '../../interfaces/user/user.auth-response.interface';
+import { IUserAuth } from '../../interfaces/user/user.response.interface';
+import { IUserAuthResponse } from '../../interfaces/user/user.interface';
 
 @Injectable({
   providedIn: 'root'

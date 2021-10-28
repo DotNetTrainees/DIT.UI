@@ -1,23 +1,40 @@
 <div class="form">
-    <div class="label-control">
-        <label for="control">{{label}}</label>
-        <span class="alert" *ngIf="valueControl.errors?.required">*</span>
-    </div>
-    <input [formControl]="valueControl" class="form-control" id="control" [type]="(label=='Password'|| label=='Confirm Password' )?'password' : 
-        label=='Email'?'email' : 'text'" #valueController (change)="read(valueController.value)" />
-    <small class="form-text text-muted" *ngIf="label === 'Email'">
-        We'll never share your email with anyone else.
+  <div class="label-control">
+    <label for="control">{{label}}</label>
+    <span class="alert" *ngIf="valueControl.errors?.required">*</span>
+  </div>
+  <input
+    [formControl]="valueControl"
+    [ngClass]="{
+      'form-control': true,
+      'is-valid': valueControl.valid,
+      'is-invalid': valueControl.invalid
+    }"
+    id="control"
+    [type]="(label == 'Password'|| label == 'Confirm Password') ? 'password' :
+        label == 'Email' ? 'email' : 'text'"
+    #valueController
+    (change)="read(valueController.value)"
+  />
+  <div *ngIf="valueControl.touched && valueControl.invalid" class="validation">
+    <small
+      class="form-text"
+      *ngIf="valueControl.errors?.email && label === 'Email'"
+    >
+      Incorrect email!
     </small>
+    <small class="form-text text-muted" *ngIf="valueControl.errors?.pattern">
+      Must contain only Latin characters!
+    </small>
+    <small
+      class="form-text text-muted"
+      *ngIf="valueControl.errors?.minlength && label === 'Password'"
+    >
+      The password at least 8 characters!
+    </small>
+  </div>
 
-    <div *ngIf="valueControl.touched && valueControl.invalid" class="validation">
-        <small class="form-text " *ngIf="valueControl.errors?.email && label === 'Email'">
-            Incorrect email!
-        </small>
-        <small class="form-text text-muted" *ngIf="valueControl.errors?.pattern">
-            Must contain only Latin characters!
-        </small>
-        <small class="form-text text-muted" *ngIf="valueControl.errors?.minlength && label==='Password'">
-            The password at least 8 characters!
-        </small>
-    </div>
+  <small class="form-text text-muted" *ngIf="label === 'Email'">
+    We'll never share your email with anyone else.
+  </small>
 </div>

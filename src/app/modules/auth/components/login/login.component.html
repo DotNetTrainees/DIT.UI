@@ -1,1 +1,5 @@
-<p>login works!</p>
+<form class="card" [formGroup]="form" (ngSubmit)="submit()">
+  <img class="logo" [src]="logo" alt="logo" />
+
+  <app-input></app-input>
+</form>
