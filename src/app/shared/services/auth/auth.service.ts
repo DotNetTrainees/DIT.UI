@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http'
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { IUserRegister } from '../../interfaces/user/user.register.interface';
-import { IUserAuth } from '../../interfaces/user/user.response.interface';
-import { IUserAuthResponse } from '../../interfaces/user/user.interface';
+import { IAuthUser } from '../../interfaces/user/auth.user.interface';
+import { IAuthResponse } from '../../interfaces/user/auth.response.interface';
+import { IRegisterUser } from '../../interfaces/user/register.user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -35,18 +35,18 @@ export class AuthService {
     this.userChanges.next(flag);
   }
 
-  public login(user: IUserAuth): Observable<IUserAuthResponse> {
+  public login(user: IAuthUser): Observable<IAuthResponse> {
     const myHeaders = new HttpHeaders().set('Content-type', 'application/json');
 
-    return this.http.post<IUserAuthResponse>('path', user, {
+    return this.http.post<IAuthResponse>('path', user, {
       headers: myHeaders,
     });
   }
 
-  public register(user: IUserRegister): Observable<IUserRegister> {
+  public register(user: IRegisterUser): Observable<any> {
     const myHeaders = new HttpHeaders().set('Content-type', 'application/json');
 
-    return this.http.post<IUserRegister>('path', user, {
+    return this.http.post<any>('path', user, {
       headers: myHeaders,
     });
   }

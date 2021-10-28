@@ -5,21 +5,22 @@
   </div>
   <input
     [formControl]="valueControl"
+    class="form-control"
     [ngClass]="{
-      'form-control': true,
-      'is-valid': valueControl.valid,
-      'is-invalid': valueControl.invalid
+      'is-invalid': (valueControl.touched && valueControl.invalid),
+      'is-valid': (valueControl.touched && valueControl.valid)
     }"
     id="control"
-    [type]="(label == 'Password'|| label == 'Confirm Password') ? 'password' :
-        label == 'Email' ? 'email' : 'text'"
+    [type]="(label == 'password'|| label == 'confirm password') ? 'password' :
+        label == 'email' ? 'email' :
+        'text'"
     #valueController
     (change)="read(valueController.value)"
   />
   <div *ngIf="valueControl.touched && valueControl.invalid" class="validation">
     <small
       class="form-text"
-      *ngIf="valueControl.errors?.email && label === 'Email'"
+      *ngIf="valueControl.errors?.email && label === 'email'"
     >
       Incorrect email!
     </small>
@@ -28,13 +29,13 @@
     </small>
     <small
       class="form-text text-muted"
-      *ngIf="valueControl.errors?.minlength && label === 'Password'"
+      *ngIf="valueControl.errors?.minlength && (label == 'password'|| label == 'confirm password')"
     >
       The password at least 8 characters!
     </small>
   </div>
 
-  <small class="form-text text-muted" *ngIf="label === 'Email'">
+  <small class="form-text text-muted" *ngIf="label === 'email'">
     We'll never share your email with anyone else.
   </small>
 </div>

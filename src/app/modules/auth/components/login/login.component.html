@@ -1,5 +1,16 @@
 <form class="card" [formGroup]="form" (ngSubmit)="submit()">
   <img class="logo" [src]="logo" alt="logo" />
 
-  <app-input></app-input>
+  <app-input [label]="'Username'" formControlName="username"></app-input>
+  <app-input [label]="'Password'" formControlName="password"></app-input>
+  <div class="remember">
+    <input type="checkbox" formControlName="remember" />
+    <span> Remember me </span>
+  </div>
+  <input
+    type="submit"
+    class="btn btn-success"
+    [disabled]="form.invalid"
+    [textContent]="'Submit'"
+  />
 </form>

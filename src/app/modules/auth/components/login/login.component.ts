@@ -1,8 +1,8 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Store } from 'ngxs';
-import { IUser } from 'src/app/shared/interfaces/user/user.interface';
+import { Store } from '@ngxs/store';
+import { IAuthUser } from 'src/app/shared/interfaces/user/auth.user.interface';
 import { Login } from 'src/app/store/authentication/actions/auth.actions';
 import { environment } from 'src/environments/environment';
 
@@ -34,9 +34,9 @@ export class LoginComponent implements OnInit {
   }
 
   public submit(): void {
-    const user: IUser = {
-      username: this.form.value.username,
-      password: this.form.value.password,
+    const user: IAuthUser = {
+      UserName: this.form.value.username,
+      Password: this.form.value.password,
     };
 
     this.store.dispatch(new Login(user)).subscribe(() => {

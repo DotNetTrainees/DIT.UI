@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -12,12 +13,12 @@ import { StoreModule } from './store/store/store.module';
     AppComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     AuthModule,
     LayoutModule,
-    InputControlModule,
-    StoreModule,
+    StoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
