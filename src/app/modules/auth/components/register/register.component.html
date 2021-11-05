@@ -1,13 +1,42 @@
 <form class="card" [formGroup]="form" (ngSubmit)="submit()">
   <img class="logo" [src]="logo" alt="logo" />
-
-
-  <span *ngIf=""></span>
+  <app-input
+    label="Username"
+    formControlName="username"
+    [errorMessages]="{
+      required: 'Please, specify the field'
+    }"
+  ></app-input>
+  <app-input
+    label="Email"
+    formControlName="email"
+    [errorMessages]="{
+      required: 'Please, specify the field'
+    }"
+  ></app-input>
+  <app-input
+    label="Password"
+    formControlName="password"
+    [type]="'password'"
+    [errorMessages]="{
+      required: 'Please, specify the field',
+      minLength: 'Password must be more than 8 characters'
+    }"
+  ></app-input>
+  <app-input
+    label="Confirm Password"
+    formControlName="confirmPassword"
+    [type]="'password'"
+    [errorMessages]="{
+      required: 'Please, specify the field',
+      minLength: 'Passwords must be match'
+    }"
+  ></app-input>
 
   <input
     type="submit"
     class="btn btn-success"
-    [disabled]="form.invalid"
     [textContent]="'Submit'"
+    [disabled]="form.invalid"
   />
 </form>

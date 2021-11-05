@@ -4,7 +4,10 @@ import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { IRegisterUser } from 'src/app/shared/interfaces/user/register.user.interface';
 import { checkPasswords } from 'src/app/shared/validators/auth/check.passwords.validator';
-import { Login, Register } from 'src/app/store/authentication/actions/auth.actions';
+import {
+  Login,
+  Register,
+} from 'src/app/store/authentication/actions/auth.actions';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -27,18 +30,22 @@ export class RegisterComponent implements OnInit {
     this.form = this.fb.group(
       {
         username: ['', Validators.required],
-        email: ['', Validators.required, Validators.email],
+        email: ['', [Validators.required, Validators.email]],
         password: [
           '',
-          Validators.required,
-          Validators.pattern(/^[a-zA-Z0-9]+$/),
-          Validators.minLength(8),
+          [
+            Validators.required,
+            Validators.pattern(/^[a-zA-Z0-9]+$/),
+            Validators.minLength(8),
+          ],
         ],
         confirmPassword: [
           '',
-          Validators.required,
-          Validators.pattern(/^[a-zA-Z0-9]+$/),
-          Validators.minLength(8),
+          [
+            Validators.required,
+            Validators.pattern(/^[a-zA-Z0-9]+$/),
+            Validators.minLength(8),
+          ],
         ],
       },
       { validators: checkPasswords() }
@@ -46,11 +53,17 @@ export class RegisterComponent implements OnInit {
   }
 
   public submit(): void {
+    console.log(this.form);
+
+    if (this.form.invalid) {
+      return;
+    }
+
     const user: IRegisterUser = {
       UserName: this.form.value.username,
-      Email: this.form.value.username,
-      Password: this.form.value.username,
-      Roles: this.form.value.password,
+      Email: this.form.value.email,
+      Password: this.form.value.password,
+      Roles: ['User'],
     };
 
     this.store.dispatch(new Register(user)).subscribe(() => {

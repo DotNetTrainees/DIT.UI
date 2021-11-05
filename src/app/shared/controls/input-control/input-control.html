@@ -12,8 +12,8 @@
     <input
       class="form-control"
       [ngClass]="{
-      'is-invalid': ngControl?.control?.errors && ngControl?.control?.touched,
-      'is-valid': !ngControl?.control?.errors && ngControl?.control?.touched
+      'is-invalid': ngControl?.control?.errors && ngControl?.control?.dirty,
+      'is-valid': !ngControl?.control?.errors && ngControl?.control?.dirty
       }"
       nz-input
       (blur)="onBlur()"
