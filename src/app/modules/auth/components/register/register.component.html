@@ -1,1 +1,14 @@
-<p>register works!</p>
+<form class="card" [formGroup]="form" (ngSubmit)="submit()">
+  <img class="logo" [src]="logo" alt="logo" />
+
+  <app-input [label]="'Username'" [isValid]="form.controls.username.valid" formControlName="username" ></app-input>
+  <app-input [label]="'Email'" [isValid]="form.controls.email.valid" formControlName="email" ></app-input>
+  <app-input [label]="'Password'" [isValid]="form.controls.password.valid" formControlName="password"></app-input>
+
+  <input
+    type="submit"
+    class="btn btn-success"
+    [disabled]="form.invalid"
+    [textContent]="'Submit'"
+  />
+</form>

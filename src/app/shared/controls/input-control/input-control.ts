@@ -26,6 +26,7 @@ import {
 })
 export class InputControl implements ControlValueAccessor {
   @Input() label: string;
+  @Input() isValid: boolean;
 
   public changed: (array: any) => void;
   public touched: () => void;
@@ -35,11 +36,11 @@ export class InputControl implements ControlValueAccessor {
   public valueControl = new FormControl(null, [
     Validators.required,
     Validators.pattern(/^[a-zA-Z0-9,@,.]+$/i),
-    Validators.email,
     Validators.minLength(8),
   ]);
 
   public writeValue(array: any): void {
+    this.valueControl.statusChanges.subscribe(data => console.log(data));
     this.value = array;
     this.valueControl.setValue(this.value);
   }

@@ -7,15 +7,15 @@
     [formControl]="valueControl"
     class="form-control"
     [ngClass]="{
-      'is-invalid': (valueControl.touched && valueControl.invalid),
-      'is-valid': (valueControl.touched && valueControl.valid)
+      'is-invalid': !isValid && valueControl.dirty,
+      'is-valid': isValid && valueControl.dirty
     }"
     id="control"
-    [type]="(label == 'password'|| label == 'confirm password') ? 'password' :
-        label == 'email' ? 'email' :
+    [type]="(label == 'Password'|| label == 'Confirm Password') ? 'password' :
+        label == 'Email' ? 'email' :
         'text'"
     #valueController
-    (change)="read(valueController.value)"
+    (ngModelChange)="read(valueController.value)"
   />
   <div *ngIf="valueControl.touched && valueControl.invalid" class="validation">
     <small
@@ -25,7 +25,7 @@
       Incorrect email!
     </small>
     <small class="form-text text-muted" *ngIf="valueControl.errors?.pattern">
-      Must contain only Latin characters!
+      Must contain only latin or number characters!
     </small>
     <small
       class="form-text text-muted"
