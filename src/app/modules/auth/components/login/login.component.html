@@ -1,9 +1,24 @@
-<form class="card" [formGroup]="form" (ngSubmit)="submit()">
+<form nz-form class="card" [formGroup]="form" (ngSubmit)="submit()">
   <img class="logo" [src]="logo" alt="logo" />
 
-  <app-input [label]="'Username'" [isValid]="form.controls.username.valid" formControlName="username" ></app-input>
-  <app-input [label]="'Password'" [isValid]="form.controls.password.valid" formControlName="password"></app-input>
-
+  <app-input
+    id="username"
+    label="Username"
+    formControlName="username"
+    [errorMessages]="{
+      required: 'Please, specify the field'
+    }"
+  ></app-input>
+  <app-input
+    id="password"
+    label="Password"
+    formControlName="password"
+    [type]="'password'"
+    [errorMessages]="{
+      required: 'Please, specify the field',
+      minLength: 'Password must be more than 8 characters'
+    }"
+  ></app-input>
   <div class="remember">
     <input type="checkbox" formControlName="remember" />
     <span> Remember me </span>

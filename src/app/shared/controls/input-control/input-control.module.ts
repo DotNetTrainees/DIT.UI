@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { InputControl } from './input-control';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzFormModule } from 'ng-zorro-antd/form';
 
 @NgModule({
   declarations: [InputControl],
@@ -10,7 +12,9 @@ import { InputControl } from './input-control';
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    NzInputModule,
+    NzFormModule,
   ],
   exports: [InputControl]
 })

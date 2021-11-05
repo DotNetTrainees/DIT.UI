@@ -3,13 +3,21 @@ import {
   forwardRef,
   ChangeDetectionStrategy,
   Input,
+  Injector,
+  ChangeDetectorRef,
+  TemplateRef,
+  AfterViewInit,
+  OnInit,
 } from '@angular/core';
 import {
   ControlValueAccessor,
   FormControl,
+  NgControl,
   NG_VALUE_ACCESSOR,
-  Validators,
+  ValidationErrors,
 } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { startWith, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-input',
@@ -24,41 +32,75 @@ import {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InputControl implements ControlValueAccessor {
-  @Input() label: string;
-  @Input() isValid: boolean;
+export class InputControl
+  implements OnInit, AfterViewInit, ControlValueAccessor
+{
+  @Input() errorMessages: any = {};
+  @Input() label: string = '';
+  @Input() placeholder: string = '';
+  @Input() icon: string = '';
+  @Input() nzSuffix: string | TemplateRef<any> = '';
+  @Input() type: string = '';
+  @Input() id: string = '';
 
-  public changed: (array: any) => void;
-  public touched: () => void;
-  public value: any;
-  public isDisabled: any;
+  public onChange = (value: any) => {};
+  public onTouched = () => {};
 
-  public valueControl = new FormControl(null, [
-    Validators.required,
-    Validators.pattern(/^[a-zA-Z0-9,@,.]+$/i),
-    Validators.minLength(8),
-  ]);
+  public ngControl: NgControl;
+  public control: FormControl;
 
-  public writeValue(array: any): void {
-    this.valueControl.statusChanges.subscribe(data => console.log(data));
-    this.value = array;
-    this.valueControl.setValue(this.value);
+  public isRequired = false;
+
+  public componentDestroyed$ = new Subject();
+
+  private currentErrors: null | ValidationErrors | undefined = null;
+
+  constructor(private injector: Injector, private cdr: ChangeDetectorRef) {}
+
+  public ngAfterViewInit(): void {
+    this.ngControl = this.injector.get(NgControl);
+    this.ngControl.control?.statusChanges
+      .pipe(
+        startWith(this.ngControl?.control?.status),
+        takeUntil(this.componentDestroyed$)
+      )
+      .subscribe((status) => {
+        this.isRequired = this.ngControl?.control?.validator?.({
+          value: null,
+        } as any)?.required;
+        this.currentErrors = this.ngControl?.control?.errors;
+        this.cdr.detectChanges();
+      });
+  }
+
+  public ngOnInit(): void {
+    this.control = new FormControl('');
+    this.control.valueChanges
+      .pipe(takeUntil(this.componentDestroyed$))
+      .subscribe((value) => {
+        this.onChange(value);
+      });
+  }
+
+  public onBlur(): void {
+    this.onTouched();
+  }
+
+  public writeValue(obj: any): void {
+    this.control?.setValue(obj);
   }
 
   public registerOnChange(fn: any): void {
-    this.changed = fn;
+    this.onChange = fn;
   }
 
   public registerOnTouched(fn: any): void {
-    this.touched = fn;
+    this.onTouched = fn;
   }
 
-  public setDisabled(isDisabled: boolean) {
-    this.isDisabled = isDisabled;
-  }
-
-  public read(value: any): void {
-    this.value = value;
-    this.changed(this.value);
+  public getErrorMessage(): string {
+    const keys = Object.keys(this.currentErrors || {});
+    const key = keys.length && keys[0];
+    return key ? this.errorMessages[key] : '';
   }
 }

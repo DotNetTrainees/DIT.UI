@@ -7,9 +7,8 @@ describe('Control.InputComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [InputControl]
-    })
-      .compileComponents();
+      declarations: [InputControl],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -1,5 +1,10 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { IAuthUser } from 'src/app/shared/interfaces/user/auth.user.interface';
@@ -14,26 +19,29 @@ import { environment } from 'src/environments/environment';
 export class LoginComponent implements OnInit {
   public form: FormGroup;
   public logo: string = environment.LOGO;
+  public submitted: boolean;
 
   constructor(
     private store: Store,
     private router: Router,
-    private cdr: ChangeDetectorRef
+    private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
-    this.form = new FormGroup({
-      username: new FormControl('', [Validators.required]),
-      password: new FormControl('', [
-        Validators.required,
-        Validators.pattern(/^[a-zA-Z0-9]+$/),
-        Validators.minLength(8),
-      ]),
-      remember: new FormControl(false),
+    this.form = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required, Validators.minLength(8)],
+      remember: [false],
     });
   }
 
   public submit(): void {
+    if (this.form.invalid) {
+      return;
+    }
+
+    this.submitted = true;
+
     const user: IAuthUser = {
       UserName: this.form.value.username,
       Password: this.form.value.password,

@@ -1,41 +1,29 @@
-<div class="form">
-  <div class="label-control">
-    <label for="control">{{label}}</label>
-    <span class="alert" *ngIf="valueControl.errors?.required">*</span>
+<nz-form-control>
+  <div class="label">
+    <label *ngIf="label">{{label}}</label>
+    <label *ngIf="isRequired" class="favourite">*</label>
   </div>
-  <input
-    [formControl]="valueControl"
-    class="form-control"
-    [ngClass]="{
-      'is-invalid': !isValid && valueControl.dirty,
-      'is-valid': isValid && valueControl.dirty
-    }"
-    id="control"
-    [type]="(label == 'Password'|| label == 'Confirm Password') ? 'password' :
-        label == 'Email' ? 'email' :
-        'text'"
-    #valueController
-    (ngModelChange)="read(valueController.value)"
-  />
-  <div *ngIf="valueControl.touched && valueControl.invalid" class="validation">
-    <small
-      class="form-text"
-      *ngIf="valueControl.errors?.email && label === 'email'"
-    >
-      Incorrect email!
-    </small>
-    <small class="form-text text-muted" *ngIf="valueControl.errors?.pattern">
-      Must contain only latin or number characters!
-    </small>
-    <small
-      class="form-text text-muted"
-      *ngIf="valueControl.errors?.minlength && (label == 'password'|| label == 'confirm password')"
-    >
-      The password at least 8 characters!
-    </small>
-  </div>
-
-  <small class="form-text text-muted" *ngIf="label === 'email'">
-    We'll never share your email with anyone else.
-  </small>
-</div>
+  <nz-input-group
+    class="nz-group"
+    *ngIf="icon || !icon"
+    [nzSuffix]="nzSuffix"
+    [nzPrefixIcon]="icon"
+  >
+    <input
+      class="form-control"
+      [ngClass]="{
+      'is-invalid': ngControl?.control?.errors && ngControl?.control?.touched,
+      'is-valid': !ngControl?.control?.errors && ngControl?.control?.touched
+      }"
+      nz-input
+      (blur)="onBlur()"
+      [formControl]="control"
+      [type]="type"
+      [id]="id"
+      [placeholder]="placeholder"
+    />
+  </nz-input-group>
+  <small * ngIf="ngControl?.control?.errors && ngControl?.control?.touched"
+    >{{ getErrorMessage() }}</small
+  >
+</nz-form-control>
