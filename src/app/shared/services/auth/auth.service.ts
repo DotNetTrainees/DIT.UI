@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { IAuthUser } from '../../interfaces/user/auth.user.interface';
 import { IAuthResponse } from '../../interfaces/user/auth.response.interface';
 import { IRegisterUser } from '../../interfaces/user/register.user.interface';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -49,6 +50,26 @@ export class AuthService {
     return this.http.post<any>('path', user, {
       headers: myHeaders,
     });
+  }
+
+  public whoami(): Observable<boolean> | any {
+    // return this.http.get(`/api/user/whoami`).pipe(
+    //   map((val) => {
+    //     const id = val._id;
+    //     const localId = localStorage.getItem('id');
+    //     if (val) {
+    //       if (localId === id) {
+    //         return true;
+    //       } else {
+    //         localStorage.clear();
+    //         return false;
+    //       }
+    //     } else {
+    //       return false;
+    //     }
+    //   }),
+    //   catchError(this.handleErrorAuth.bind(this))
+    // );
   }
 
   public handleErrorAuth(error: HttpErrorResponse): Observable<boolean> {
