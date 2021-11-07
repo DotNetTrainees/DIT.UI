@@ -13,6 +13,7 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MessengerModule } from './modules/messenger/messenger.page.module';
 
 registerLocaleData(en);
 
@@ -24,11 +25,9 @@ registerLocaleData(en);
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    AuthModule,
     LayoutModule,
     StoreModule,
-    FormsModule,
-    BrowserAnimationsModule
+    FormsModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

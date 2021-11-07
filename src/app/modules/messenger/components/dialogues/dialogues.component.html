@@ -1,0 +1,22 @@
+<div class="dialogues">
+  <div class="filter-panel">asd</div>
+  <div class="dialogue-list">
+    <cdk-virtual-scroll-viewport itemSize="30" class="demo-infinite-container">
+      <nz-list nzItemLayout="horizontal">
+        <nz-list-item *cdkVirtualFor="let dialogue of dialogues">
+          <nz-skeleton *ngIf="!dialogue" [nzAvatar]="true" [nzParagraph]="{ rows: 1 }"></nz-skeleton>
+          <nz-list-item-meta-title>
+            <a href="https://ng.ant.design">{{ dialogue.FirstMemberName }}</a>
+          </nz-list-item-meta-title>
+
+          <nz-list-item-meta
+            nzAvatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+            nzDescription="{{ dialogue.LastMessage.Text }}"
+          >
+          </nz-list-item-meta>
+        </nz-list-item>
+        <nz-list-empty *ngIf="dialogues.length === 0"></nz-list-empty>
+      </nz-list>
+    </cdk-virtual-scroll-viewport>
+  </div>
+</div>
