@@ -22,10 +22,8 @@
     <input type="checkbox" formControlName="remember" />
     <span> Remember me </span>
   </div>
-  <input
-    type="submit"
-    class="btn btn-success"
-    [disabled]="form.invalid"
-    [textContent]="'Submit'"
-  />
+
+  <app-default-button [disabled]="form.invalid">
+    Submit
+  </app-default-button>
 </form>

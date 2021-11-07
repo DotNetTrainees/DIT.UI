@@ -1,15 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TextareaControlComponent } from './textarea-control/textarea-control.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { TextAreaControl } from './textarea-control.component';
 
 
 
 @NgModule({
   declarations: [
-    TextareaControlComponent
+    TextAreaControl
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NzInputModule,
+    NzFormModule,
+  ],
+  exports: [
+    TextAreaControl
   ]
 })
 export class TextareaControlModule { }
