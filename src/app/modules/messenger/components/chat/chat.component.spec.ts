@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { MessengerComponent } from './chat.component';
 
 describe('MessengerComponent', () => {
@@ -8,9 +7,8 @@ describe('MessengerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MessengerComponent ]
-    })
-    .compileComponents();
+      declarations: [MessengerComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

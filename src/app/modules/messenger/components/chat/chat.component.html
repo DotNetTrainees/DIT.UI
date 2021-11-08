@@ -12,18 +12,24 @@
       <nz-list-item
         *cdkVirtualFor="let messenge of messenges"
         class="list-item"
-        [class.list-item-cur-user]="messenge.ProfileId == curUserId"
+        [class.list-item-owner]="messenge.ProfileId == curUserId"
       >
         <div class="list-item-wrapper">
-          <p class="list-item-profileName">{{ messenge.ProfileId }}</p>
           <p class="list-item-message">{{ messenge.Text }}</p>
+          <p class="list-item-date">
+            {{ messenge.SendDate | date: "hh:mm √" }}
+          </p>
         </div>
-        <p class="list-item-date">
-          {{ messenge.SendDate | date: "shortTime" }}
-        </p>
       </nz-list-item>
       <nz-list-empty *ngIf="messenges.length === 0"></nz-list-empty>
     </nz-list>
   </cdk-virtual-scroll-viewport>
-  <div class="chat-input"></div>
+  <div class="chat-footer">
+    <div class="chat-footer-textarea">
+      <app-textarea-control [placeholder]="'Write message. . .'">
+      </app-textarea-control>
+    </div>
+  </div>
 </div>
+
+<ng-template #myMessage> </ng-template>

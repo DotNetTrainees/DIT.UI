@@ -8,6 +8,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { InputControlModule } from 'src/app/shared/controls/input-control/input-control.module';
 import { MessengerComponent } from './components/chat/chat.component';
+import { TextareaControlModule } from 'src/app/shared/controls/textarea-control/textarea-control.module';
 
 const routes: Routes = [
   { path: '', component: MessengerPageComponent, pathMatch: 'full' },
@@ -26,6 +27,7 @@ const routes: Routes = [
     ScrollingModule,
     NzSkeletonModule,
     InputControlModule,
+    TextareaControlModule,
   ],
 })
 export class MessengerModule {}

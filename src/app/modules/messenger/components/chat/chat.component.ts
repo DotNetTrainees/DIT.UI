@@ -26,6 +26,5 @@ export class MessengerComponent implements OnInit {
       };
     });
     console.log(this.messenges);
-
   }
 }

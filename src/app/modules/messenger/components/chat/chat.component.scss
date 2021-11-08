@@ -2,8 +2,9 @@
   height: 100%;
 
   .chat-header {
-  height: 75px;
-  display: flex;
+    height: 75px;
+    display: flex;
+    border-bottom: 1px solid var(--lightGrayColor);
 
     .chat-header-photo {
       margin-left: 2.5%;
@@ -18,18 +19,22 @@
   }
 
   .chat-list {
-    height: 100%;
-
-    .list-item-cur-user {
-      background-color: bisque;
+    height: 75%;
+    border-bottom: 1px solid var(--lightGrayColor);
+    .list-item-owner {
+      justify-content: flex-end;
     }
 
     .list-item {
       padding: 10px 5%;
+      border-bottom: none;
+    }
+  }
 
-      .list-item-profileName {
-        font-weight: bold;
-      }
+  .chat-footer {
+    .chat-footer-textarea {
+      width: 90%;
+      margin: auto;
     }
   }
 }
