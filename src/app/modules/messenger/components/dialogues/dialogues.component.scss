@@ -1,3 +1,21 @@
-.dialogues{
-  height: 80vh;
+.dialogues {
+  height: 100%;
+  border-right: 1px solid lightgray;
+
+  .dialogue-list {
+    height: calc(100% - 40px);
+
+    .list-item {
+      padding: 15px 10px;
+
+      :hover {
+        cursor: pointer;
+        background-color: lightgray;
+      }
+    }
+
+    .list-item-odd {
+      background-color: var(--greyColor);
+    }
+  }
 }

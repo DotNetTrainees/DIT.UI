@@ -1,0 +1,23 @@
+<div class="messenger">
+    <cdk-virtual-scroll-viewport itemSize="30" class="messenger-list">
+      <nz-list nzItemLayout="horizontal">
+        <nz-list-item
+          *cdkVirtualFor="let messenge of messenges"
+          class="list-item"
+        >
+        <nz-list-item-meta-title>
+          <a href="https://ng.ant.design">{{ messenge.ProfileId }}</a>
+        </nz-list-item-meta-title>
+        <nz-list-item-meta-title>
+          <a href="https://ng.ant.design">{{ messenge.Date | date: 'shortTime'}}</a>
+        </nz-list-item-meta-title>
+          <nz-list-item-meta
+            nzAvatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+            nzDescription="{{ messenge.Text }}"
+          >
+          </nz-list-item-meta>
+        </nz-list-item>
+        <nz-list-empty *ngIf="messenges.length === 0"></nz-list-empty>
+      </nz-list>
+    </cdk-virtual-scroll-viewport>
+</div>

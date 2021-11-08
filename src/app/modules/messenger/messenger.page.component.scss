@@ -1,6 +1,12 @@
-.messenger-page{
+.messenger-page {
   display: flex;
-  border: 1px solid black;
-  margin: 0 150px;
-  width: 100%;
+  height: 100%;
+}
+
+.dialogues {
+  flex-grow: 1;
+}
+
+.messenger {
+  flex-grow: 5;
 }

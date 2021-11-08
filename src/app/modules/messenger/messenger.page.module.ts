@@ -6,19 +6,22 @@ import { DialoguesComponent } from './components/dialogues/dialogues.component';
 import { NzListModule } from 'ng-zorro-antd/list';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
+import { InputControlModule } from 'src/app/shared/controls/input-control/input-control.module';
+import { MessengerComponent } from './components/messenger/messenger.component';
 
 const routes: Routes = [
   { path: '', component: MessengerPageComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
-  declarations: [MessengerPageComponent, DialoguesComponent],
+  declarations: [MessengerPageComponent, DialoguesComponent, MessengerComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     NzListModule,
     ScrollingModule,
-    NzSkeletonModule
+    NzSkeletonModule,
+    InputControlModule
   ],
 })
 export class MessengerModule {}
