@@ -5,17 +5,18 @@ import { randomString } from '../../messenger.page.component';
 
 @Component({
   selector: 'app-messenger',
-  templateUrl: './messenger.component.html',
-  styleUrls: ['./messenger.component.scss'],
+  templateUrl: './chat.component.html',
+  styleUrls: ['./chat.component.scss'],
 })
 export class MessengerComponent implements OnInit {
   @Input() dialogue: IGetDialogue;
   public messenges: IGetMessage[];
+  public curUserId: string = '1';
 
   constructor() {}
 
   ngOnInit(): void {
-    this.messenges = Array.from({ length: 500 }).map((_, i) => {
+    this.messenges = Array.from({ length: 1000 }).map((_, i) => {
       return {
         Id: i.toString(),
         DialogueId: '123',

@@ -7,9 +7,8 @@ describe('MessengerPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MessengerPageComponent ]
-    })
-    .compileComponents();
+      declarations: [MessengerPageComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

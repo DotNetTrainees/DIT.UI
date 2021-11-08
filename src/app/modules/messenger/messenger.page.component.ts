@@ -4,12 +4,12 @@ import { IGetDialogue } from 'src/app/shared/interfaces/messenger/get.dialogue';
 @Component({
   selector: 'app-messenger-page',
   templateUrl: './messenger.page.component.html',
-  styleUrls: ['./messenger.page.component.scss']
+  styleUrls: ['./messenger.page.component.scss'],
 })
 export class MessengerPageComponent implements OnInit {
   public selectDialogue: IGetDialogue;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     this.selectDialogue = {
@@ -27,6 +27,8 @@ export class MessengerPageComponent implements OnInit {
       },
     };
   }
+
+  changeDialogue(dialogue: IGetDialogue) {}
 }
 
 export function randomString() {

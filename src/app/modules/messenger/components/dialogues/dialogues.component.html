@@ -2,7 +2,7 @@
   <div class="filter-panel">
     <app-input [placeholder]="'Search'"></app-input>
   </div>
-  <cdk-virtual-scroll-viewport itemSize="30" class="dialogue-list">
+  <cdk-virtual-scroll-viewport itemSize="75" class="dialogue-list">
     <nz-list nzItemLayout="horizontal">
       <nz-list-item
         *cdkVirtualFor="let dialogue of dialogues; let odd = odd"

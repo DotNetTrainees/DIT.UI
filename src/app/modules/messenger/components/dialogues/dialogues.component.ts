@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { IGetDialogue } from 'src/app/shared/interfaces/messenger/get.dialogue';
 import { randomString } from '../../messenger.page.component';
 
@@ -8,12 +8,12 @@ import { randomString } from '../../messenger.page.component';
   styleUrls: ['./dialogues.component.scss'],
 })
 export class DialoguesComponent implements OnInit {
+  @Output() onChangeDialogue = new EventEmitter<IGetDialogue>();
+
   public dialogues: IGetDialogue[];
 
-  constructor() {}
-
   ngOnInit(): void {
-    this.dialogues = Array.from({ length: 500 }).map((_, i) => {
+    this.dialogues = Array.from({ length: 100 }).map((_, i) => {
       return {
         Id: i.toString(),
         FirstMemberProfileId: i.toString(),
@@ -31,5 +31,7 @@ export class DialoguesComponent implements OnInit {
     });
   }
 
-
+  changeDialogue(dialogue: IGetDialogue) {
+    this.onChangeDialogue.emit(dialogue);
+  }
 }

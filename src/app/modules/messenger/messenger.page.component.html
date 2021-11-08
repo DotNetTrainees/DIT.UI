@@ -1,4 +1,7 @@
 <div class="messenger-page">
-  <app-dialogues class="dialogues"></app-dialogues>
+  <app-dialogues
+    class="dialogues"
+    (onChangeDialogue)="changeDialogue($event)"
+  ></app-dialogues>
   <app-messenger class="messenger" [dialogue]="selectDialogue"></app-messenger>
 </div>

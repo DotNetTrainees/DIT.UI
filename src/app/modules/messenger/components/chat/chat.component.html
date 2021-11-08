@@ -1,0 +1,29 @@
+<div class="chat">
+  <div class="chat-header">
+    <img
+      class="chat-header-photo"
+      src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+      alt="photo"
+    />
+    <h5 class="chat-header-dialogue-name">Victor Naumov</h5>
+  </div>
+  <cdk-virtual-scroll-viewport itemSize="100" class="chat-list">
+    <nz-list nzItemLayout="horizontal">
+      <nz-list-item
+        *cdkVirtualFor="let messenge of messenges"
+        class="list-item"
+        [class.list-item-cur-user]="messenge.ProfileId == curUserId"
+      >
+        <div class="list-item-wrapper">
+          <p class="list-item-profileName">{{ messenge.ProfileId }}</p>
+          <p class="list-item-message">{{ messenge.Text }}</p>
+        </div>
+        <p class="list-item-date">
+          {{ messenge.SendDate | date: "shortTime" }}
+        </p>
+      </nz-list-item>
+      <nz-list-empty *ngIf="messenges.length === 0"></nz-list-empty>
+    </nz-list>
+  </cdk-virtual-scroll-viewport>
+  <div class="chat-input"></div>
+</div>
