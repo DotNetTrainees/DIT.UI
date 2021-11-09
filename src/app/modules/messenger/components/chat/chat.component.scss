@@ -1,5 +1,7 @@
 .chat {
   height: 100%;
+  border-right: 1px solid lightgray;
+  border-top: 1px solid lightgray;
 
   .chat-header {
     height: 75px;
@@ -27,7 +29,7 @@
       padding: 10px 5%;
       border-bottom: none;
 
-      .list-item-date{
+      .list-item-date {
         margin-top: -10px;
       }
     }

@@ -6,6 +6,7 @@ import { InfoComponent } from './components/info/info.component';
 import { WallComponent } from './components/wall/wall.component';
 import { ManageComponent } from './components/manage/manage.component';
 import { FriendsPanelComponent } from './components/friends-panel/friends-panel.component';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 
 const routes: Routes = [
   { path: '', component: ProfilePageComponent, pathMatch: 'full' },
@@ -16,6 +17,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    NzAvatarModule,
   ]
 })
 export class ProfileModule { }
