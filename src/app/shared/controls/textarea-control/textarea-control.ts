@@ -20,8 +20,8 @@ import { startWith, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-textarea-control',
-  templateUrl: './textarea-control.component.html',
-  styleUrls: ['./textarea-control.component.scss'],
+  templateUrl: './textarea-control.html',
+  styleUrls: ['./textarea-control.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

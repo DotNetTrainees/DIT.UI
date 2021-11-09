@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MessengerPageComponent } from './modules/messenger/messenger.page.component';
 import { LoginGuard } from './shared/guards/login/login.guard';
 
 const routes: Routes = [
@@ -12,10 +11,17 @@ const routes: Routes = [
   },
   {
     path: 'messenger',
-    // component: MessengerPageComponent,
     loadChildren: () =>
       import('./modules/messenger/messenger.page.module').then(
         (m) => m.MessengerModule
+      ),
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'profile',
+    loadChildren: () =>
+      import('./modules/profile/profile.module').then(
+        (m) => m.ProfileModule
       ),
     canActivate: [LoginGuard],
   },

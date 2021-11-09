@@ -15,9 +15,9 @@
         [class.list-item-owner]="messenge.ProfileId == curUserId"
       >
         <div class="list-item-wrapper">
-          <p class="list-item-message">{{ messenge.Text }}</p>
+          <p>{{ messenge.Text }}</p>
           <p class="list-item-date">
-            {{ messenge.SendDate | date: "hh:mm √" }}
+            {{ messenge.SendDate | date: "hh:mm" }}
           </p>
         </div>
       </nz-list-item>

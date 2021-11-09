@@ -1,12 +1,13 @@
 .messenger-page {
   display: flex;
+  margin: auto;
   height: 100%;
-}
 
-.dialogues {
-  flex-grow: 1;
-}
+  .dialogues {
+    flex-grow: 1;
+  }
 
-.messenger {
-  flex-grow: 5;
+  .messenger {
+    flex-grow: 5;
+  }
 }

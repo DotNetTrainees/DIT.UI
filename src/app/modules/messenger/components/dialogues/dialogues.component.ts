@@ -10,6 +10,9 @@ import { randomString } from '../../messenger.page.component';
 export class DialoguesComponent implements OnInit {
   @Output() onChangeDialogue = new EventEmitter<IGetDialogue>();
 
+  public searchTerm:string;
+  public searchDate:Date;
+
   public dialogues: IGetDialogue[];
 
   ngOnInit(): void {

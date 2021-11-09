@@ -10,6 +10,8 @@ import { InputControlModule } from 'src/app/shared/controls/input-control/input-
 import { MessengerComponent } from './components/chat/chat.component';
 import { TextareaControlModule } from 'src/app/shared/controls/textarea-control/textarea-control.module';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { DatePickerModule } from 'src/app/shared/controls/date-picker/date.picker.module';
 
 const routes: Routes = [
   { path: '', component: MessengerPageComponent, pathMatch: 'full' },
@@ -22,14 +24,16 @@ const routes: Routes = [
     MessengerComponent,
   ],
   imports: [
-    NzAvatarModule,
     CommonModule,
     RouterModule.forChild(routes),
-    NzListModule,
     ScrollingModule,
-    NzSkeletonModule,
     InputControlModule,
     TextareaControlModule,
+    DatePickerModule,
+    NzAvatarModule,
+    NzListModule,
+    NzSkeletonModule,
+    NzDatePickerModule,
   ],
 })
 export class MessengerModule {}

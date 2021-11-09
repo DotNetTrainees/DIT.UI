@@ -1,23 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzFormModule } from 'ng-zorro-antd/form';
-import { TextAreaControl } from './textarea-control';
+import { DatePicker } from './date.picker';
 
 @NgModule({
-  declarations: [
-    TextAreaControl
-  ],
+  declarations: [DatePicker],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     NzInputModule,
+    NzDatePickerModule,
     NzFormModule,
   ],
-  exports: [
-    TextAreaControl
-  ]
+  exports: [DatePicker]
 })
-export class TextareaControlModule { }
+export class DatePickerModule {}

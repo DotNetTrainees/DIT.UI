@@ -1,0 +1,12 @@
+<div class="block" >
+  <input
+    id="control"
+    [formControl]="valueControl"
+    [placeholder]="placeholder"
+    class="form-control"
+    #valueController
+    type="date"
+    (change)="read(valueController.value)"
+  />
+
+</div>
