@@ -5,17 +5,42 @@
   .dialogue-list {
     height: calc(100% - 40px);
 
-    .list-item {
-      padding: 15px 10px;
-
+    .list-item-wrapper {
       :hover {
         cursor: pointer;
-        background-color: lightgray;
+        background-color: var(--lightGrayColor);
+      }
+      .list-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 10px;
+
+        .list-item-wrapper-metadata {
+          display: flex;
+
+          .list-item-wrapper-text {
+            .list-item-title {
+              font-weight: bold;
+            }
+
+            .list-item-message {
+              margin-top: -15px;
+            }
+          }
+        }
+        .list-item-wrapper-date {
+          justify-content: flex-end;
+        }
       }
     }
-
-    .list-item-odd {
-      background-color: var(--grayColor);
-    }
   }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: rgb(235, 235, 235);
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(250, 250, 250);
+  border-radius: 9em;
 }

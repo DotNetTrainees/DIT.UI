@@ -1,10 +1,10 @@
 <div class="chat">
   <div class="chat-header">
-    <img
+    <nz-avatar
       class="chat-header-photo"
-      src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-      alt="photo"
-    />
+      nzSrc="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+      [nzSize]="64"
+    ></nz-avatar>
     <h5 class="chat-header-dialogue-name">Victor Naumov</h5>
   </div>
   <cdk-virtual-scroll-viewport itemSize="100" class="chat-list">
@@ -31,5 +31,3 @@
     </div>
   </div>
 </div>
-
-<ng-template #myMessage> </ng-template>

@@ -9,6 +9,7 @@ import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { InputControlModule } from 'src/app/shared/controls/input-control/input-control.module';
 import { MessengerComponent } from './components/chat/chat.component';
 import { TextareaControlModule } from 'src/app/shared/controls/textarea-control/textarea-control.module';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 
 const routes: Routes = [
   { path: '', component: MessengerPageComponent, pathMatch: 'full' },
@@ -21,6 +22,7 @@ const routes: Routes = [
     MessengerComponent,
   ],
   imports: [
+    NzAvatarModule,
     CommonModule,
     RouterModule.forChild(routes),
     NzListModule,
